@@ -5,17 +5,22 @@ defmodule Creationals.FactoryMethod.Items do
     Sword
   }
 
-  def upgrade(bow = %Bow{}),
-    do: %Bow{level: level_up_logic(:level, bow), range: level_up_logic(bow)}
+  def upgrade(item) do
+    level_up(item)
+    |> upgrade_attributes()
+  end
 
-  def upgrade(shield = %Shield{}),
-    do: %Shield{level: level_up_logic(:level, shield), defense: level_up_logic(shield)}
+  defp upgrade_attributes(bow = %Bow{}), do: level_up_attributes(bow)
+  defp upgrade_attributes(shield = %Shield{}), do: level_up_attributes(shield)
+  defp upgrade_attributes(sword = %Sword{}), do: level_up_attributes(sword)
 
-  def upgrade(sword = %Sword{}),
-    do: %Sword{level: level_up_logic(:level, sword), damage: level_up_logic(sword)}
+  defp level_up(item), do: %{item | level: item.level + 1}
 
-  defp level_up_logic(:level, %_{level: level}), do: level + 1
-  defp level_up_logic(%_{level: level, damage: damage}), do: damage + (0.6 * level + 1)
-  defp level_up_logic(%_{level: level, defense: defense}), do: defense + (0.5 * level + 1)
-  defp level_up_logic(%_{level: level, range: range}), do: range + (0.8 * level + 1)
+  defp level_up_attributes(item = %_{damage: damage}),
+    do: %{item | damage: damage + 0.6 * item.level}
+
+  defp level_up_attributes(item = %_{defense: defense}),
+    do: %{item | defense: defense + 0.5 * item.level}
+
+  defp level_up_attributes(item = %_{range: range}), do: %{item | range: range + 0.8 * item.level}
 end
