@@ -52,5 +52,8 @@ defmodule Creationals.Builder.Character do
     |> set_strength(3)
   end
 
-  def build_character(_), do: {:error, "Need to specify the class as :archer, :smart_archer, :heavy_knight, :knight or :mage"}
+  def build_character(_),
+    do:
+      {:error,
+       "Need to specify the class as :archer, :smart_archer, :heavy_knight, :knight or :mage"}
 end
