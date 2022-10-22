@@ -3,11 +3,12 @@ defmodule Creationals.FactoryMethod.ItemCreator do
   Responsible to constructing the Item that app needs.
   """
 
-  alias Creationals.FactoryMethod.Items.{
+  alias Creationals.FactoryMethod.Items.Weapons.{
     Bow,
-    Shield,
     Sword
   }
+
+  alias Creationals.FactoryMethod.Items.Defensives.Shield
 
   def create(:sword, %{damage: damage, level: level}), do: %Sword{level: level, damage: damage}
   def create(:sword, %{level: level}), do: %Sword{level: level}

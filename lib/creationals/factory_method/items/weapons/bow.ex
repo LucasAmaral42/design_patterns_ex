@@ -1,4 +1,4 @@
-defmodule Creationals.FactoryMethod.Items.Bow do
+defmodule Creationals.FactoryMethod.Items.Weapons.Bow do
   @moduledoc """
   Module responsible to store bow structure and functions
   """

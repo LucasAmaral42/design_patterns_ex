@@ -1,4 +1,4 @@
-defmodule Creationals.FactoryMethod.Items.Shield do
+defmodule Creationals.FactoryMethod.Items.Defensives.Shield do
   @moduledoc """
   Module responsible to store shield structure and functions
   """

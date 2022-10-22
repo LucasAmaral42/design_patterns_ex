@@ -1,9 +1,10 @@
 defmodule Creationals.FactoryMethod.Items do
-  alias __MODULE__.{
+  alias __MODULE__.Weapons.{
     Bow,
-    Shield,
     Sword
   }
+
+  alias __MODULE__.Defensives.Shield
 
   def upgrade(item) do
     level_up(item)
